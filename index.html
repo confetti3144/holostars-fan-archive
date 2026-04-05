@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOLOSTARS FAN ARCHIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #7c6aff;
+    --accent2: #ff6a9b;
+    --accent3: #6affda;
+    --text: #e8e8f0;
+    --text-dim: #7a7a90;
+    --text-dimmer: #3a3a50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,15,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.15em; color: var(--text); cursor: pointer; }
+  .logo span { color: var(--accent); }
+  .header-meta { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; }
+
+  .hero { padding: 5rem 2rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; letter-spacing: 0.04em; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: normal; color: var(--accent); display: block; }
+  .hero-desc { font-size: 0.9rem; color: var(--text-dim); max-width: 480px; line-height: 1.8; margin-bottom: 2rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; padding: 0.7rem 1.4rem; border: 1px solid var(--accent); color: var(--accent); background: transparent; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+  .btn:hover { background: var(--accent); color: var(--bg); }
+  .btn-ghost { border-color: var(--border); color: var(--text-dim); }
+  .btn-ghost:hover { border-color: var(--text-dim); background: transparent; color: var(--text); }
+
+  .divider { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+  .divider-line { flex: 1; height: 1px; background: var(--border); }
+  .divider-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-dimmer); letter-spacing: 0.2em; white-space: nowrap; }
+
+  .members-section { max-width: 1100px; margin: 0 auto; padding: 0 2rem 5rem; }
+  .gen-group { margin-bottom: 3rem; }
+  .gen-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; color: var(--text-dimmer); padding: 0.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 1px; }
+
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+
+  .member-card { background: var(--surface); padding: 1.5rem 1.3rem; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden; }
+  .member-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--member-color, var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .member-card:hover { background: var(--surface2); }
+  .member-card:hover::before { transform: scaleX(1); }
+
+  .member-color-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-bottom: 0.6rem; }
+  .member-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; letter-spacing: 0.04em; color: var(--text); margin-bottom: 0.2rem; line-height: 1.1; }
+  .member-name-ja { font-size: 0.7rem; color: var(--text-dim); margin-bottom: 0.8rem; }
+  .member-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.58rem; padding: 0.15rem 0.45rem; border: 1px solid var(--border); color: var(--text-dim); margin-right: 0.25rem; margin-bottom: 0.25rem; }
+  .member-count { margin-top: 1rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--text-dimmer); }
+  .member-count strong { color: var(--accent3); }
+
+  .member-page { display: none; }
+  .home-page.hidden { display: none; }
+
+  .back-btn { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-dim); cursor: pointer; padding: 1.2rem 2rem; display: inline-flex; align-items: center; gap: 0.5rem; border: none; background: none; transition: color 0.2s; letter-spacing: 0.05em; }
+  .back-btn:hover { color: var(--text); }
+
+  .member-profile { max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem; display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
+  @media (max-width: 700px) { .member-profile { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  .profile-left { position: sticky; top: 80px; }
+  .profile-avatar { width: 100%; aspect-ratio: 1; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
+  .profile-avatar .initials { position: absolute; }
+  .profile-gen-badge { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--text-dim); margin-bottom: 0.4rem; }
+  .profile-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 0.3rem; }
+  .profile-name-ja { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1.2rem; }
+  .profile-bio { font-size: 0.85rem; line-height: 1.9; color: var(--text-dim); margin-bottom: 1.5rem; }
+  .profile-links { display: flex; flex-direction: column; gap: 0.5rem; }
+  .profile-link { display: flex; align-items: center; gap: 0.6rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--text-dim); text-decoration: none; padding: 0.5rem 0.7rem; border: 1px solid var(--border); transition: all 0.2s; }
+  .profile-link:hover { border-color: var(--member-color, var(--accent)); color: var(--member-color, var(--accent)); }
+  .profile-tags { margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+  .posts-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .posts-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.06em; }
+  .posts-count { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-dim); }
+
+  .post-card { background: var(--surface); border: 1px solid var(--border); margin-bottom: 1px; transition: border-color 0.2s; }
+  .post-card:hover { border-color: var(--member-color, var(--accent)); }
+  .post-video-wrap { position: relative; padding-bottom: 56.25%; background: var(--bg); overflow: hidden; }
+  .post-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .post-image-wrap { background: var(--bg); overflow: hidden; max-height: 320px; }
+  .post-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .post-card:hover .post-image-wrap img { transform: scale(1.02); }
+  .post-body { padding: 1.2rem 1.4rem; }
+  .post-meta-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+  .post-type-badge { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; padding: 0.15rem 0.5rem; text-transform: uppercase; }
+  .badge-video { background: rgba(124,106,255,0.15); color: var(--accent); border: 1px solid rgba(124,106,255,0.3); }
+  .badge-image { background: rgba(106,255,218,0.1); color: var(--accent3); border: 1px solid rgba(106,255,218,0.2); }
+  .badge-text  { background: rgba(255,106,155,0.1); color: var(--accent2); border: 1px solid rgba(255,106,155,0.2); }
+  .post-desc { font-size: 0.88rem; line-height: 1.75; color: var(--text); margin-bottom: 1rem; font-weight: 400; }
+  .post-moe { background: var(--surface2); border-left: 2px solid var(--accent2); padding: 0.7rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; line-height: 1.7; color: var(--text-dim); font-style: italic; }
+  .post-moe::before { content: '♡ 投稿者萌點 '; font-style: normal; font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--accent2); display: block; margin-bottom: 0.3rem; letter-spacing: 0.1em; }
+  .post-meta-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 0.8rem; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 0.5rem; }
+  .post-author { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.4rem; }
+  .post-author a { color: var(--accent3); text-decoration: none; }
+  .post-author a:hover { text-decoration: underline; }
+  .post-date { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--text-dimmer); }
+
+  .submit-banner { max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem; }
+  .submit-box { border: 1px dashed var(--border); padding: 2rem; text-align: center; }
+  .submit-box p { font-size: 0.83rem; color: var(--text-dim); margin-bottom: 1rem; line-height: 1.7; }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-note { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--text-dimmer); line-height: 1.6; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.5s ease both; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="showHome()">HOLOSTARS <span>FAN</span> ARCHIVE</div>
+  <div class="header-meta">BY FANS · FOR FANS</div>
+</header>
+
+<div class="home-page" id="homePage">
+  <section class="hero fade-up">
+    <div class="hero-eyebrow">// COMMUNITY ARCHIVE</div>
+    <h1>HOLOSTARS<em>台灣應援站</em></h1>
+    <p class="hero-desc">由粉絲維護的非官方資料站。這裡收錄剪輯師、繪師、翻譯、活動主辦們用熱愛做成的作品，讓每一份心意都被看見。</p>
+    <div class="hero-actions">
+      <a href="#members" class="btn">瀏覽成員</a>
+      <a href="https://forms.gle/yourformlink" target="_blank" class="btn btn-ghost">投稿作品</a>
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">MEMBERS</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <section class="members-section" id="members">
+    <div id="membersContainer"></div>
+  </section>
+</div>
+
+<div class="member-page" id="memberPage">
+  <button class="back-btn" onclick="showHome()">← 返回成員列表</button>
+  <div class="member-profile" id="memberProfile"></div>
+
+  <div class="divider" style="max-width:1100px;margin:1rem auto 2rem;">
+    <div class="divider-line"></div>
+    <div class="divider-label" id="postsLabel">POSTS</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div class="posts-header">
+      <div class="posts-title">粉絲投稿</div>
+      <div class="posts-count" id="postsCount"></div>
+    </div>
+    <div id="postsContainer"></div>
+  </div>
+
+  <div class="submit-banner">
+    <div class="submit-box">
+      <p>想分享你剪的影片、畫的圖、或翻譯的內容？<br>每一份熱愛都值得被看見。</p>
+      <a href="https://forms.gle/yourformlink" target="_blank" class="btn">投稿到這個頁面</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-note">HOLOSTARS FAN ARCHIVE<br>非官方粉絲站 · 內容版權歸各創作者所有</div>
+  <div class="footer-note" style="text-align:right;">本站由粉絲自發維護<br>如有問題請聯繫管理員</div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════
+//  DATA  ← 管理員編輯這裡
+// ══════════════════════════════════════════
+const DATA = {
+  members: [
+    // ── 一期生 ──
+    {
+      id: "miyabi",
+      name: "花咲みやび",
+      nameJa: "Hanasaki Miyabi",
+      gen: "一期生",
+      color: "#FF2F3F",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UC6t3-_N8A6ME1JShZHHqOMw", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/miyabihanasaki", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "izuru",
+      name: "奏手イヅル",
+      nameJa: "Kanade Izuru",
+      gen: "一期生",
+      color: "#1F2F8F",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCZgOv3pDBqx8vkvas5wwZ0Q", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/kanadeizuru", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "aruran",
+      name: "アルランディス",
+      nameJa: "Arurandeisu",
+      gen: "一期生",
+      color: "#2F6F4F",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCKeAhJvy8zgXWOh18j3L9DA", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/arurandeisu", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "rikka",
+      name: "律可",
+      nameJa: "Rikka",
+      gen: "一期生",
+      color: "#FFB7DF",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UC9mf_ZznboDeI9tB6lkH0pQ", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/rikkaroid", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    // ── 二期生 ──
+    {
+      id: "astel",
+      name: "アステル・レダ",
+      nameJa: "Astel Leda",
+      gen: "二期生",
+      color: "#0047AB",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCNVEsYbiZjH5QLmGeSgTSzg", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/astel_leda", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "kishido",
+      name: "岸堂天真",
+      nameJa: "Kishido Temma",
+      gen: "二期生",
+      color: "#FFD902",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCUKD-uaobj9jiqB-VXt71mA", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/kishidotemma", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "roberu",
+      name: "夕刻ロベル",
+      nameJa: "Yukoku Roberu",
+      gen: "二期生",
+      color: "#CA5A00",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/yukokuroberu", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    // ── 三期生 ──
+    {
+      id: "shien",
+      name: "影山シエン",
+      nameJa: "Kageyama Shien",
+      gen: "三期生",
+      color: "#B481D0",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UChSvpZYRPh0FvG4SJGSga3g", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/kageyamashien", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "ouga",
+      name: "荒咬オウガ",
+      nameJa: "Aragami Oga",
+      gen: "三期生",
+      color: "#D6F05D",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCwL7dgTxKo8Y4RFIKWaf8gA", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/aragamioga", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    // ── UPROAR!! ──
+    {
+      id: "fuma",
+      name: "夜十神封魔",
+      nameJa: "Yatogami Fuma",
+      gen: "UPROAR!!",
+      color: "#FABF13",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCc88OV45ICgHbn3ZqLLb52w", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/yatogamifuma", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "uyu",
+      name: "羽継烏有",
+      nameJa: "Hanepi Uyu",
+      gen: "UPROAR!!",
+      color: "#F7F6F5",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCpKklJ4W6HCKBxasl6Hg1lw", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/hanepiuyu", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "gamma",
+      name: "緋崎ガンマ",
+      nameJa: "Hizaki Gamma",
+      gen: "UPROAR!!",
+      color: "#E60012",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UC4WFHlrYFEhOhObGRmEhOxA", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/hizakigamma", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "rio",
+      name: "水無世燐央",
+      nameJa: "Minase Rio",
+      gen: "UPROAR!!",
+      color: "#A4A8D4",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/channel/UCGSOfFtVCGAMxMnBCNiMsFw", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/minaserio", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    }
+  ]
+};
+
+// ══════════════════════════════════════════
+//  RENDER
+// ══════════════════════════════════════════
+const GEN_ORDER = ["一期生", "二期生", "三期生", "UPROAR!!"];
+
+function renderMembersGrid() {
+  const container = document.getElementById('membersContainer');
+  const grouped = {};
+  GEN_ORDER.forEach(g => grouped[g] = []);
+  DATA.members.forEach(m => {
+    if (!grouped[m.gen]) grouped[m.gen] = [];
+    grouped[m.gen].push(m);
+  });
+
+  container.innerHTML = GEN_ORDER.map(gen => {
+    if (!grouped[gen] || grouped[gen].length === 0) return '';
+    return `
+      <div class="gen-group">
+        <div class="gen-label">HOLOSTARS ${gen}</div>
+        <div class="members-grid">
+          ${grouped[gen].map(m => `
+            <div class="member-card fade-up" style="--member-color:${m.color}" onclick="showMember('${m.id}')">
+              <div class="member-color-dot" style="background:${m.color}"></div>
+              <div class="member-name">${m.name}</div>
+              <div class="member-name-ja">${m.nameJa}</div>
+              ${m.tags.filter(Boolean).map(t => `<span class="member-tag">${t}</span>`).join('')}
+              <div class="member-count"><strong>${m.posts.length}</strong> 篇投稿</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function showMember(id) {
+  const m = DATA.members.find(x => x.id === id);
+  if (!m) return;
+
+  document.getElementById('memberProfile').innerHTML = `
+    <div class="profile-left fade-up" style="--member-color:${m.color}">
+      <div class="profile-avatar" style="border-color:${m.color}40;">
+        <span class="initials" style="color:${m.color};">${m.name[0]}</span>
+      </div>
+      <div class="profile-gen-badge">HOLOSTARS ${m.gen}</div>
+      <div class="profile-name" style="color:${m.color};">${m.name}</div>
+      <div class="profile-name-ja">${m.nameJa}</div>
+      ${m.bio ? `<p class="profile-bio">${m.bio}</p>` : ''}
+      <div class="profile-links">
+        ${m.links.map(l => `
+          <a class="profile-link" href="${l.url}" target="_blank" rel="noopener" style="--member-color:${m.color}">
+            <span>${l.icon}</span>${l.label}
+          </a>
+        `).join('')}
+      </div>
+      ${m.tags.filter(Boolean).length ? `
+        <div class="profile-tags">
+          ${m.tags.filter(Boolean).map(t => `<span class="member-tag">${t}</span>`).join('')}
+        </div>` : ''}
+    </div>
+    <div id="postsColumn"></div>
+  `;
+
+  document.getElementById('postsLabel').textContent = `POSTS · ${m.name}`;
+  document.getElementById('postsCount').textContent = `${m.posts.length} 篇投稿`;
+
+  const container = document.getElementById('postsContainer');
+  if (m.posts.length === 0) {
+    container.innerHTML = `
+      <div style="padding:3rem;text-align:center;border:1px dashed var(--border);">
+        <p style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-dimmer);letter-spacing:0.1em;">
+          還沒有投稿——成為第一個吧
+        </p>
+      </div>`;
+  } else {
+    container.innerHTML = m.posts.map(p => renderPost(p, m.color)).join('');
+  }
+
+  document.getElementById('homePage').classList.add('hidden');
+  document.getElementById('memberPage').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderPost(p, color) {
+  const badgeClass = { video:'badge-video', image:'badge-image', text:'badge-text' }[p.type];
+  const badgeLabel = { video:'影片', image:'圖片', text:'文字' }[p.type];
+
+  let mediaHtml = '';
+  if (p.type === 'video' && p.videoId) {
+    mediaHtml = `
+      <div class="post-video-wrap">
+        <iframe src="https://www.youtube.com/embed/${p.videoId}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>`;
+  } else if (p.type === 'image' && p.image) {
+    mediaHtml = `
+      <div class="post-image-wrap">
+        <img src="${p.image}" alt="投稿圖片" loading="lazy">
+      </div>`;
+  }
+
+  const authorHtml = p.authorUrl
+    ? `<a href="${p.authorUrl}" target="_blank" rel="noopener">${p.author}</a>`
+    : `<span style="color:var(--text-dim)">${p.author}</span>`;
+
+  return `
+    <div class="post-card" style="--member-color:${color}">
+      ${mediaHtml}
+      <div class="post-body">
+        <div class="post-meta-top">
+          <span class="post-type-badge ${badgeClass}">${badgeLabel}</span>
+        </div>
+        <p class="post-desc">${p.desc}</p>
+        ${p.moe ? `<div class="post-moe">${p.moe}</div>` : ''}
+        <div class="post-meta-bottom">
+          <div class="post-author">BY ${authorHtml}</div>
+          <div class="post-date">${p.date}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function showHome() {
+  document.getElementById('memberPage').style.display = 'none';
+  document.getElementById('homePage').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderMembersGrid();
+</script>
+</body>
+</html>
