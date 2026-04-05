@@ -61,11 +61,15 @@
   .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.2em; color: var(--text); cursor: pointer; }
   .logo span { color: var(--accent); }
   .header-meta { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.2em; }
+  @media (max-width: 480px) {
+    .logo { font-size: 0.95rem; letter-spacing: 0.1em; }
+    .header-meta { display: none; }
+  }
 
   .hero { padding: 4rem 3rem 4rem; max-width: 1100px; margin: 0 auto; }
   .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; }
   .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 8vw, 5rem); line-height: 1.2; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
-  @media (max-width: 480px) { .hero { padding: 2.5rem 1.5rem 2rem; } .hero h1 { font-size: 2.2rem; } .hero-desc { font-size: 0.82rem; } }
+  @media (max-width: 480px) { .hero { padding: 2rem 1.5rem 1.5rem; } .hero h1 { font-size: 1.9rem; } .hero h1 em { font-size: 1.7rem; } .hero-desc { font-size: 0.82rem; } .hero-eyebrow { font-size: 0.6rem; } }
   .hero h1 em { font-style: normal; color: var(--accent); display: block; }
   .hero-desc { font-size: 0.9rem; color: var(--text-dim); max-width: 480px; line-height: 1.8; margin-bottom: 2rem; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
