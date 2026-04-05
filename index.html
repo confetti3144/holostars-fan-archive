@@ -6,11 +6,8 @@
 <title>HOLOSTARS FAN ARCHIVE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kosugi&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kosugi&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #FAFAFA;
@@ -92,8 +89,8 @@
   .member-card:hover { background: var(--surface2); }
   .member-card:hover::before { transform: scaleX(1); }
 
-  .member-color-dot { border-radius: 80%; width: 20px; height: 20px; display: inline-block; margin-bottom: 0.3rem;clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
-  .member-name { font-family: "Kosugi", sans-serif;font-weight: 600;  font-style: normal;; font-size: 1.2rem; letter-spacing: 0.05em; color: #1C1C1C; margin-bottom: 0.2rem; line-height: 1.0; }
+  .member-color-dot { border-radius: 80%; width: 20px; height: 20px; display: inline-block; margin-bottom: 0.3rem; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .member-name { font-family: "Kosugi", sans-serif; font-weight: 600; font-style: normal; font-size: 1.2rem; letter-spacing: 0.05em; color: #1C1C1C; margin-bottom: 0.2rem; line-height: 1.0; }
   .member-name-ja { font-size: 1.0rem; letter-spacing: 0.0em; color: #266AFF; margin-bottom: 0.8rem; }
   .member-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.58rem; padding: 0.15rem 0.45rem; border: 1px solid var(--border); color: var(--text-dim); margin-right: 0.25rem; margin-bottom: 0.25rem; }
   .member-count { margin-top: 1rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--text-dimmer); }
@@ -109,7 +106,7 @@
   @media (max-width: 700px) { .member-profile { grid-template-columns: 1fr; gap: 1.5rem; } }
 
   .profile-left { position: sticky; top: 80px; }
-  .profile-avatar { width: 100%; aspect-ratio: 1; background: #F6F6F6 ; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
+  .profile-avatar { width: 100%; aspect-ratio: 1; background: #F6F6F6; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
   .profile-avatar .initials { position: absolute; }
   .profile-gen-badge { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--text-dim); margin-bottom: 0.4rem; }
   .profile-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 0.3rem; }
@@ -126,7 +123,7 @@
 
   .post-card { background: var(--surface); border: 1px solid var(--border); margin-bottom: 1px; transition: border-color 0.2s; }
   .post-card:hover { border-color: var(--member-color, var(--accent)); }
-  .post-video-wrap { position: relative; padding-bottom: 50%; background: #F6F6F6 ; overflow: hidden; }
+  .post-video-wrap { position: relative; padding-bottom: 50%; background: #F6F6F6; overflow: hidden; }
   .post-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
   .post-image-wrap { background: #F6F6F6; overflow: hidden; max-height: 320px; }
   .post-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
@@ -137,7 +134,7 @@
   .badge-video { background: rgba(124,106,255,0.15); color: var(--accent); border: 1px solid rgba(124,106,255,0.3); }
   .badge-image { background: rgba(106,255,218,0.1); color: var(--accent3); border: 1px solid rgba(106,255,218,0.2); }
   .badge-text  { background: rgba(255,106,155,0.1); color: var(--accent2); border: 1px solid rgba(255,106,155,0.2); }
-  .badge-trans { background: rgba(124,106,255,0.15); color: #000000 ; border: 1px solid rgba(124,106,255,0.3);  }
+  .badge-trans { background: rgba(124,106,255,0.15); color: #000000; border: 1px solid rgba(124,106,255,0.3); }
   .post-desc { font-size: 0.88rem; line-height: 1.75; color: var(--text); margin-bottom: 1rem; font-weight: 400; }
   .post-moe { background: #F6F6F6; border-left: 2px solid var(--accent2); padding: 0.7rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; line-height: 1.7; color: var(--text-dim); font-style: italic; }
   .post-moe::before { content: '♡ 投稿者分享 '; font-style: normal; font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--accent2); display: block; margin-bottom: 0.3rem; letter-spacing: 0.1em; }
@@ -172,7 +169,7 @@
   <section class="hero fade-up">
     <div class="hero-eyebrow">// COMMUNITY ARCHIVE</div>
     <h1>HOLOSTARS<em>應援推廣平台</em></h1>
-    <p class="hero-desc"> 齁星相關影音、活動、翻譯與切片之投稿集散地。</p>
+    <p class="hero-desc">齁星相關影音、活動、翻譯與切片之投稿集散地。</p>
     <div class="hero-actions">
       <a href="#members" class="btn">瀏覽成員</a>
       <a href="https://forms.gle/yourformlink" target="_blank" class="btn btn-ghost">投稿貼文</a>
@@ -243,12 +240,13 @@ const DATA = {
       posts: [
         {
           id: "p001",
-          type: "video",           // "video" | "image" | "text"
-          videoid: "VRYifml8NCHaMXQs",  // YouTube ID
+          type: "video",
+          videoId: "I8AZLzJVpwo",
           desc: "【歌曲推廣】星座になれたら",
+          moe: null,
           image: null,
           author: "anonymous",
-          authorUrl: "https://youtu.be/I8AZLzJVpwo?si=VRYifml8NCHaMXQs",
+          authorUrl: null,
           date: "2026-04-05"
         },
         {
@@ -267,6 +265,7 @@ const DATA = {
           type: "trans",
           videoId: null,
           desc: "【翻譯】內文簡介。全文約1200字，附上時間戳方便對照。",
+          moe: null,
           image: null,
           author: "翻譯者Ｃ",
           authorUrl: "https://facebook.com/example",
@@ -404,20 +403,6 @@ const DATA = {
       posts: []
     },
     {
-      id: "uyu",
-      name: "羽継烏有",
-      nameJa: "Hanepi Uyu",
-      gen: "UPROAR!!",
-      color: "#F7F6F5",
-      bio: "",
-      links: [
-        { label: "YouTube", url: "https://www.youtube.com/@UtsugiUyu", icon: "▶" },
-        { label: "Twitter / X", url: "https://x.com/hanepiuyu", icon: "𝕏" }
-      ],
-      tags: [],
-      posts: []
-    },
-    {
       id: "gamma",
       name: "緋崎ガンマ",
       nameJa: "Hizaki Gamma",
@@ -427,6 +412,20 @@ const DATA = {
       links: [
         { label: "YouTube", url: "https://www.youtube.com/@HizakiGamma", icon: "▶" },
         { label: "Twitter / X", url: "https://x.com/hizakigamma", icon: "𝕏" }
+      ],
+      tags: [],
+      posts: []
+    },
+    {
+      id: "uyu",
+      name: "羽継烏有",
+      nameJa: "Hanepi Uyu",
+      gen: "UPROAR!!",
+      color: "#F7F6F5",
+      bio: "",
+      links: [
+        { label: "YouTube", url: "https://www.youtube.com/@UtsugiUyu", icon: "▶" },
+        { label: "Twitter / X", url: "https://x.com/hanepiuyu", icon: "𝕏" }
       ],
       tags: [],
       posts: []
@@ -532,8 +531,8 @@ function showMember(id) {
 }
 
 function renderPost(p, color) {
-  const badgeClass = { video:'badge-video', image:'badge-image', text:'badge-text' }[p.type];
-  const badgeLabel = { video:'影片', image:'圖片', text:'文字', trans:'翻譯' }[p.type];
+  const badgeClass = { video:'badge-video', image:'badge-image', text:'badge-text', trans:'badge-trans' }[p.type] || 'badge-text';
+  const badgeLabel = { video:'影片', image:'圖片', text:'文字', trans:'翻譯' }[p.type] || p.type;
 
   let mediaHtml = '';
   if (p.type === 'video' && p.videoId) {
@@ -543,7 +542,7 @@ function renderPost(p, color) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen loading="lazy"></iframe>
       </div>`;
-  } else if (p.type === 'image' && p.image) {
+  } else if (p.image) {
     mediaHtml = `
       <div class="post-image-wrap">
         <img src="${p.image}" alt="投稿圖片" loading="lazy">
