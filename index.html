@@ -6,16 +6,21 @@
 <title>HOLOSTARS FAN ARCHIVE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kosugi&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kosugi&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #1a1a24;
-    --border: #2a2a3a;
-    --accent: #7c6aff;
+    --bg: #FAFAFA;
+    --surface: #F6F6F8;
+    --surface2: #AFF7E3;
+    --border: #F5F5F5;
+    --accent: #266AFF;
     --accent2: #ff6a9b;
-    --accent3: #6affda;
-    --text: #e8e8f0;
+    --accent3: #1C1C1C;
+    --text: #1C1C1C;
     --text-dim: #7a7a90;
     --text-dimmer: #3a3a50;
   }
@@ -43,26 +48,26 @@
   }
 
   header {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 5px solid var(--border);
     padding: 0 2rem;
     position: sticky;
     top: 0;
-    background: rgba(10,10,15,0.92);
+    background: #AFF7E3;
     backdrop-filter: blur(12px);
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 56px;
+    height: 55px;
   }
 
-  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.15em; color: var(--text); cursor: pointer; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.2em; color: var(--text); cursor: pointer; }
   .logo span { color: var(--accent); }
-  .header-meta { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; }
+  .header-meta { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.2em; }
 
-  .hero { padding: 5rem 2rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .hero { padding: 4rem 3rem 4rem; max-width: 1100px; margin: 0 auto; }
   .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; letter-spacing: 0.04em; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 2vw, 2rem); line-height: 1.2; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
   .hero h1 em { font-style: normal; color: var(--accent); display: block; }
   .hero-desc { font-size: 0.9rem; color: var(--text-dim); max-width: 480px; line-height: 1.8; margin-bottom: 2rem; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -87,9 +92,9 @@
   .member-card:hover { background: var(--surface2); }
   .member-card:hover::before { transform: scaleX(1); }
 
-  .member-color-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-bottom: 0.6rem; }
-  .member-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; letter-spacing: 0.04em; color: var(--text); margin-bottom: 0.2rem; line-height: 1.1; }
-  .member-name-ja { font-size: 0.7rem; color: var(--text-dim); margin-bottom: 0.8rem; }
+  .member-color-dot { border-radius: 80%; width: 20px; height: 20px; display: inline-block; margin-bottom: 0.3rem;clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .member-name { font-family: "Kosugi", sans-serif;font-weight: 600;  font-style: normal;; font-size: 1.2rem; letter-spacing: 0.05em; color: #1C1C1C; margin-bottom: 0.2rem; line-height: 1.0; }
+  .member-name-ja { font-size: 1.0rem; letter-spacing: 0.0em; color: #266AFF; margin-bottom: 0.8rem; }
   .member-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.58rem; padding: 0.15rem 0.45rem; border: 1px solid var(--border); color: var(--text-dim); margin-right: 0.25rem; margin-bottom: 0.25rem; }
   .member-count { margin-top: 1rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--text-dimmer); }
   .member-count strong { color: var(--accent3); }
@@ -104,7 +109,7 @@
   @media (max-width: 700px) { .member-profile { grid-template-columns: 1fr; gap: 1.5rem; } }
 
   .profile-left { position: sticky; top: 80px; }
-  .profile-avatar { width: 100%; aspect-ratio: 1; background: var(--surface2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
+  .profile-avatar { width: 100%; aspect-ratio: 1; background: #F6F6F6 ; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
   .profile-avatar .initials { position: absolute; }
   .profile-gen-badge { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--text-dim); margin-bottom: 0.4rem; }
   .profile-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 0.3rem; }
@@ -133,7 +138,7 @@
   .badge-image { background: rgba(106,255,218,0.1); color: var(--accent3); border: 1px solid rgba(106,255,218,0.2); }
   .badge-text  { background: rgba(255,106,155,0.1); color: var(--accent2); border: 1px solid rgba(255,106,155,0.2); }
   .post-desc { font-size: 0.88rem; line-height: 1.75; color: var(--text); margin-bottom: 1rem; font-weight: 400; }
-  .post-moe { background: var(--surface2); border-left: 2px solid var(--accent2); padding: 0.7rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; line-height: 1.7; color: var(--text-dim); font-style: italic; }
+  .post-moe { background: #F6F6F6; border-left: 2px solid var(--accent2); padding: 0.7rem 1rem; margin-bottom: 1rem; font-size: 0.82rem; line-height: 1.7; color: var(--text-dim); font-style: italic; }
   .post-moe::before { content: '♡ 投稿者萌點 '; font-style: normal; font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--accent2); display: block; margin-bottom: 0.3rem; letter-spacing: 0.1em; }
   .post-meta-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 0.8rem; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 0.5rem; }
   .post-author { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-dim); display: flex; align-items: center; gap: 0.4rem; }
@@ -165,8 +170,8 @@
 <div class="home-page" id="homePage">
   <section class="hero fade-up">
     <div class="hero-eyebrow">// COMMUNITY ARCHIVE</div>
-    <h1>HOLOSTARS<em>臺灣應援推廣平台</em></h1>
-    <p class="hero-desc">由粉絲維護的非官方資料站。這裡收錄剪輯師、繪師、翻譯、活動主辦們用熱愛做成的作品，讓每一份心意都被看見。</p>
+    <h1>HOLOSTARS<em>應援推廣平台</em></h1>
+    <p class="hero-desc"> 齁星相關影音、活動、翻譯與切片之投稿集散地。</p>
     <div class="hero-actions">
       <a href="#members" class="btn">瀏覽成員</a>
       <a href="https://forms.gle/yourformlink" target="_blank" class="btn btn-ghost">投稿貼文</a>
@@ -228,7 +233,7 @@ const DATA = {
       nameJa: "Hanasaki Miyabi",
       gen: "一期生",
       color: "#FF2F3F",
-      bio: "",
+      bio: "介紹",
       links: [
         { label: "YouTube", url: "https://www.youtube.com/channel/UC6t3-_N8A6ME1JShZHHqOMw", icon: "▶" },
         { label: "Twitter / X", url: "https://x.com/miyabihanasaki", icon: "𝕏" }
