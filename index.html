@@ -5,28 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOLOSTARS FAN ARCHIVE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kosugi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kosugi&family=Noto+Sans+TC:wght@100..900&family=Unica+One&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FAFAFA;
-    --surface: #F6F6F8;
-    --surface2: #AFF7E3;
-    --border: #F5F5F5;
-    --accent: #266AFF;
+    --bg: #3a6fff;
+    --surface: rgba(255,255,255,0.12);
+    --surface2: rgba(255,255,255,0.22);
+    --border: rgba(255,255,255,0.6);
+    --accent: #fff;
     --accent2: #ff6a9b;
-    --accent3: #1C1C1C;
-    --text: #1C1C1C;
-    --text-dim: #7a7a90;
-    --text-dimmer: #3a3a50;
+    --accent3: #fff;
+    --text: #fff;
+    --text-dim: rgba(255,255,255,0.7);
+    --text-dimmer: rgba(255,255,255,0.45);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
+    background: linear-gradient(160deg, #1a3fff 0%, #3a6fff 25%, #5a8fff 55%, #8abfff 100%);
+    background-attachment: fixed;
     color: var(--text);
     font-family: 'Noto Sans TC', sans-serif;
     font-weight: 300;
@@ -49,39 +49,39 @@
   ══════════════════════════════ */
   .fab-left, .fab-right {
     position: fixed;
-    top: calc(30px + 1.2rem);
+    top: calc(22px + 1.2rem);
     z-index: 200;
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    background: rgba(175,247,227,0.92);
+    background: rgba(38,106,255,0.85);
     backdrop-filter: blur(8px);
     border: none;
     cursor: pointer;
     padding: 0.5rem 0.9rem;
     transition: background 0.2s, transform 0.2s;
     text-decoration: none;
-    color: var(--text);
+    color: #fff;
   }
 
   .fab-left { left: 1.2rem; border-radius: 2rem; }
   .fab-right { right: 1.2rem; border-radius: 0.4rem; flex-direction: column; gap: 5px; padding: 0.6rem 0.7rem; }
 
-  .fab-left:hover, .fab-right:hover { background: #AFF7E3; transform: scale(1.05); }
+  .fab-left:hover, .fab-right:hover { background: rgba(38,106,255,1); transform: scale(1.05); }
 
   .fab-icon { font-size: 1rem; }
-  .fab-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text); }
+  .fab-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: #fff; }
 
   /* 漢堡線條（fab-right 內） */
-  .fab-right span {
+   .fab-right span {
     display: block;
     width: 22px;
     height: 2px;
-    background: var(--text);
+    background: #fff;
     transition: all 0.3s;
     transform-origin: center;
   }
-
+ 
   .fab-right.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .fab-right.open span:nth-child(2) { opacity: 0; }
   .fab-right.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -92,27 +92,18 @@
   .fullscreen-hero {
     position: relative;
     width: 100%;
-    height: calc(100vh - 30px);
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: calc(100vh - 22px);
     overflow: hidden;
+    display: block;
   }
 
-  /* 背景——預設漸層，可換成 background-image: url(...) */
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #AFF7E3 0%, #d0eaff 50%, #e8f0ff 100%);
-    z-index: 0;
-  }
 
-  /* 跑馬燈（最頂部固定） */
+
+  /* ── 頂部小跑馬燈 ── */
   .hero-ticker {
-    background: var(--accent);
+    background: #2133FF;
     overflow: hidden;
-    height: 30px;
+    height: 32px;
     display: flex;
     align-items: center;
     position: relative;
@@ -121,7 +112,7 @@
 
   .ticker-track {
     display: inline-flex;
-    animation: ticker 28s linear infinite;
+    animation: ticker 25s linear infinite;
     white-space: nowrap;
   }
 
@@ -129,8 +120,8 @@
 
   .ticker-item {
     font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
     color: #fff;
     padding: 0 2.5rem;
   }
@@ -142,19 +133,229 @@
     100% { transform: translateX(-50%); }
   }
 
-  /* 主視覺文字內容 */
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 2rem;
+  /* ── 全寬大字跑馬燈 ── */
+  .big-marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: transparent;
+    padding: 0.5rem 0;
+    line-height: 1;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
   }
 
-  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; }
-  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 10vw, 7rem); line-height: 1.0; letter-spacing: 0.04em; color: var(--text); margin-bottom: 0.5rem; }
-  .hero-title em { font-style: normal; color: var(--accent); display: block; font-size: 0.7em; }
-  .hero-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 2rem; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .big-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    animation: big-marquee 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  .big-marquee-track:hover { animation-play-state: paused; }
+
+  .big-marquee-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    padding: 0 1.5rem;
+  }
+
+  .big-marquee-sep {
+    color: #ffffff;
+    font-size: 0em;
+    padding: 0 0.5rem;
+  }
+
+  @keyframes big-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* 主視覺三欄排版 */
+  /* ── Hero 版面 ── */
+  .hero-layout {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1400px;
+    height: calc(100% - 70px);
+    padding: 2.5rem 2.5rem 1rem;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 20rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .hero-layout { grid-template-columns: 1fr; padding: 4.5rem 1.2rem 1.5rem; gap: 1.2rem; }
+  }
+
+  /* 左欄 */
+  .hero-left { padding-top: 1.5rem; }
+
+  .hero-logo {
+    font-family: "Unica One", sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.15em;
+    line-height: 1.8;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 1.8rem;
+    opacity: 0.9;
+  }
+
+  .hero-btns { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background: #2133FF;
+    padding: 0.05rem 1rem;
+    text-decoration: none;
+    border-radius: 0rem;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-btn:hover { background: #1628cc; transform: translateX(4px); }
+
+  /* 右欄 */
+  .hero-right { display: flex; flex-direction: column; gap: 0.8rem; padding-top: 0.5rem; }
+
+  .hero-title-row { display: flex; align-items: center; justify-content: space-between; }
+
+  .hero-title {
+    font-family: "Unica One", sans-serif;
+    font-weight: 400;
+    font-size: 6.8rem;
+    line-height: 1.0;
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(0,0,100,0.15);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── 幻燈片 ── */
+  .slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/8;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 5rem;
+    background: rgba(255,255,255,0.8);
+    border: 2px  rgba(50,55,255,0.4);
+    box-shadow: 14px 14px  #2133FF;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 90s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide.active { opacity: 1; }
+
+  .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .slide-placeholder {
+    font-family: 'Unica One', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    line-height: 2;
+    letter-spacing: 0.1em;
+  }
+
+  .slide-placeholder span { font-size: 0.6rem; opacity: 0.7; }
+
+  /* 控制點 */
+  .slide-dots {
+    position: absolute;
+    bottom: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.4rem;
+    z-index: 2;
+  }
+
+  .slide-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+  }
+
+  .slide-dot.active { background: #fff; transform: scale(1.3); }
+
+  /* 箭頭 */
+  .slide-prev, .slide-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+
+  .slide-prev { left: 0.8rem; }
+  .slide-next { right: 0.8rem; }
+  .slide-prev:hover, .slide-next:hover { background: rgba(255,255,255,0.4); }
+
+  @media (max-width: 700px) {
+    .slideshow { aspect-ratio: 4/3; border-radius: 1rem; }
+    .slide-prev, .slide-next { width: 28px; height: 28px; font-size: 1.1rem; }
+  }
+
+  /* 關於本站 */
+  .about-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 1rem;
+    color: #ffffff;
+    line-height: 2;
+  }
+
+  @media (max-width: 480px) {
+    .about-text { font-size: 0.8rem; }
+    .about-text br { display: none; }
+  }
 
   .hero-scroll-hint {
     position: absolute;
@@ -196,7 +397,7 @@
     display: block;
     width: 22px;
     height: 2px;
-    background: var(--text);
+    background: #fff;
     transition: all 0.3s;
     transform-origin: center;
   }
@@ -311,9 +512,9 @@
   ══════════════════════════════ */
   .members-section { max-width: 1100px; margin: 0 auto; padding: 0 2rem 5rem; }
   .gen-group { margin-bottom: 3rem; }
-  .gen-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; color: var(--text-dimmer); padding: 0.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 1px; }
+  .gen-label { font-family: 'Space Mono', monospace; font-size: 0.85rem; letter-spacing: 0.25em; color: #fff ; padding: 0.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 1px; }
 
-  .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1px; background: var(--border); border: 1px  var(--border); }
 
   .member-card { background: var(--surface); padding: 1.5rem 1.3rem; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden; }
   .member-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--member-color, var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
@@ -322,10 +523,10 @@
 
   .member-color-dot { border-radius: 80%; width: 20px; height: 20px; display: inline-block; margin-bottom: 0.3rem; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
   .member-name { font-family: "Kosugi", sans-serif; font-weight: 600; font-size: 1.2rem; letter-spacing: 0.05em; color: #1C1C1C; margin-bottom: 0.2rem; line-height: 1.0; }
-  .member-name-ja { font-size: 1.0rem; color: #266AFF; margin-bottom: 0.8rem; }
-  .member-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.58rem; padding: 0.15rem 0.45rem; border: 1px solid var(--border); color: var(--text-dim); margin-right: 0.25rem; margin-bottom: 0.25rem; }
-  .member-count { margin-top: 1rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--text-dimmer); }
-  .member-count strong { color: var(--accent3); }
+  .member-name-ja { font-size: 1.0rem; color: #3C3C3C; margin-bottom: 0.8rem; }
+  .member-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.58rem; padding: 0.15rem 0.45rem; border: 1px solid var(--border); color: #2133FF; margin-right: 0.25rem; margin-bottom: 0.25rem; }
+  .member-count { margin-top: 1rem; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: #2133FF; }
+  .member-count strong { color: #2133FF; }
 
   /* ══════════════════════════════
      PAGE VISIBILITY
@@ -348,7 +549,7 @@
   .profile-avatar .initials { position: absolute; }
   .profile-info { display: flex; flex-direction: column; justify-content: center; padding-top: 0.3rem; }
   .profile-gen-badge { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--text-dim); margin-bottom: 0.4rem; }
-  .profile-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 0.3rem; }
+  .profile-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.02em; line-height: 0.95; margin-bottom: 0.3rem; }
   .profile-name-ja { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1rem; }
   .profile-bio { font-size: 0.85rem; line-height: 1.9; color: var(--text-dim); margin-bottom: 1.2rem; }
   .profile-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
@@ -419,88 +620,11 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-  /* ══════════════════════════════
-     浮動圓點導覽
-  ══════════════════════════════ */
-  .float-nav {
-    position: fixed;
-    right: 1.2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 90;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
 
-  @media (max-width: 700px) { .float-nav { display: none; } }
-
-  .float-nav-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-  }
-
-  .float-nav-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    color: var(--text);
-    background: #fff;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid var(--border);
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.2s;
-    white-space: nowrap;
-    pointer-events: none;
-  }
-
-  .float-nav-item:hover .float-nav-label {
-    opacity: 1;
-    transform: translateX(0);
-    color: var(--accent);
-  }
-
-  .float-nav-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--border);
-    border: 2px solid #ccc;
-    transition: all 0.25s;
-    flex-shrink: 0;
-  }
-
-  .float-nav-item:hover .float-nav-dot {
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: scale(1.2);
-  }
-
-  .float-nav-item.active .float-nav-dot {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-
-  .float-nav-item.active .float-nav-label {
-    color: var(--accent);
-  }
 
 </style>
 </head>
 <body>
-
-<!-- 浮動左上：問い合わせ -->
-<a class="fab-left" href="https://forms.gle/zRhBeRqSF2ih173E8" target="_blank" rel="noopener" title="問い合わせ">
-  <span class="fab-icon">✉</span>
-  <span class="fab-label">問い合わせ</span>
-</a>
 
 <!-- 浮動右上：漢堡選單 -->
 <button class="fab-right menu-btn" id="menuBtn" onclick="toggleNav()" aria-label="選單">
@@ -543,7 +667,6 @@
       <span class="ticker-item">HOLOSTARS 台灣應援推廣平台</span>
       <span class="ticker-item">齁星相關影音、翻譯、切片、活動集散地</span>
       <span class="ticker-item">歡迎投稿你的創作與分享</span>
-      <span class="ticker-item">BY FANS · FOR HOLOSTARS</span>
       <span class="ticker-item">HOLOSTARS 台灣應援推廣平台</span>
       <span class="ticker-item">齁星相關影音、翻譯、切片、活動集散地</span>
       <span class="ticker-item">歡迎投稿你的創作與分享</span>
@@ -553,17 +676,84 @@
 
   <!-- 全屏主視覺 -->
   <section class="fullscreen-hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content fade-up">
-      <div class="hero-eyebrow">// COMMUNITY ARCHIVE</div>
-      <h1 class="hero-title">HOLOSTARS<em>應援推廣平台</em></h1>
-      <p class="hero-desc">齁星相關影音、活動、翻譯與切片之投稿集散地。</p>
-      <div class="hero-actions">
-        <a href="#members" class="btn" onclick="document.getElementById('members').scrollIntoView({behavior:'smooth'})">瀏覽成員</a>
-        <a href="https://forms.gle/yourformlink" target="_blank" class="btn btn-ghost">投稿貼文</a>
+    <div class="hero-layout">
+
+      <!-- 左欄：logo + 按鈕 -->
+      <div class="hero-left fade-up">
+        <div class="hero-logo" onclick="showPage('home')">
+          HOLOSTARS<br>FAN<br>ARCHIVE
+        </div>
+        <div class="hero-btns">
+          <a class="hero-btn" href="https://forms.gle/wsRTx99EH5pVujrEA" target="_blank" rel="noopener">★ 粉絲投稿</a>
+          <a class="hero-btn" href="https://forms.gle/iaCM8Nee7AUwF6it6" target="_blank" rel="noopener">★ 意見徵集</a>
+          <a class="hero-btn" href="https://forms.gle/KNCs4xsjriPjqWTr9" target="_blank" rel="noopener">★ 文案募集</a>
+        </div>
+      </div>
+
+      <!-- 右欄：標題 + 大圖片/幻燈片框 -->
+      <div class="hero-right fade-up">
+        <div class="hero-title-row">
+          <h1 class="hero-title">Star Cluster</h1>
+        </div>
+        <!-- 幻燈片區域 -->
+        <div class="slideshow">
+          <div class="slide active">
+            <!-- 放活動宣傳圖：<img src="your-image.jpg" alt="活動名稱"> -->
+            <div class="slide-placeholder">活動宣傳圖片區<br><span>建議尺寸 1200 × 600px</span></div>
+          </div>
+          <div class="slide">
+            <div class="slide-placeholder">第二張投影片</div>
+          </div>
+          <div class="slide">
+            <div class="slide-placeholder">第三張投影片</div>
+          </div>
+          <!-- 控制點 -->
+          <div class="slide-dots">
+            <span class="slide-dot active" onclick="goSlide(0)"></span>
+            <span class="slide-dot" onclick="goSlide(1)"></span>
+            <span class="slide-dot" onclick="goSlide(2)"></span>
+          </div>
+          <!-- 左右箭頭 -->
+          <button class="slide-prev" onclick="changeSlide(-1)">‹</button>
+          <button class="slide-next" onclick="changeSlide(1)">›</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 大字跑馬燈：全寬，貼在主視覺底部 -->
+    <div class="big-marquee-wrap">
+      <div class="big-marquee-track">
+        <span class="big-marquee-item"><span class="big-marquee-item"></span></span>
+        <span class="big-marquee-item">BY FANS · FOR HOLOSTARS</span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">推廣集散地<span class="big-marquee-item"></span></span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">BY FANS · FOR HOLOSTARS</span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">推廣集散地<span class="big-marquee-item"></span></span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">BY FANS · FOR HOLOSTARS</span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">推廣集散地<span class="big-marquee-item"></span></span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">BY FANS · FOR HOLOSTARS</span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">推廣集散地<span class="big-marquee-sep"></span></span>
+        <span class="big-marquee-item">★</span>
+        <span class="big-marquee-item">推廣集散地<span class="big-marquee-item"></span></span>
       </div>
     </div>
-    <div class="hero-scroll-hint">↓ scroll</div>
+  </section>
+
+
+  <!-- 關於本站 -->
+  <section class="about-section">
+    <p class="about-text">
+      本平台由ホロスターズ粉絲自主設計與營運，用於提供粉絲投稿推薦直播、歌曲與切片，<br>
+      並分享 Holostars 各成員們的魅力之處，以此讓更多人可以認識到這群有才華的星星 ✦
+    </p>
   </section>
 
   <div class="divider">
@@ -899,19 +1089,29 @@ function renderPost(p, color) {
 // Init
 renderMembersGrid();
 renderTeam();
+
+// ══════════════════════════════════════════
+//  SLIDESHOW
+// ══════════════════════════════════════════
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slide-dot');
+
+function goSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function changeSlide(dir) { goSlide(currentSlide + dir); }
+
+// 自動播放（每 5 秒）
+setInterval(() => changeSlide(1), 5000);
 </script>
 
-<!-- 浮動圓點導覽 -->
-<nav class="float-nav" id="floatNav">
-  <button class="float-nav-item active" id="fnav-home" onclick="showPage('home')">
-    <span class="float-nav-label">首頁</span>
-    <span class="float-nav-dot"></span>
-  </button>
-  <button class="float-nav-item" id="fnav-team" onclick="showPage('team')">
-    <span class="float-nav-label">營運團隊</span>
-    <span class="float-nav-dot"></span>
-  </button>
-</nav>
+
 
 </body>
 </html>
