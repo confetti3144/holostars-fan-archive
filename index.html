@@ -7,56 +7,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kosugi&family=Noto+Sans+TC:wght@100..900&family=Unica+One&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X322DH5TZK"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-X322DH5TZK');
 </script>
-  
 <style>
-  #starCanvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-  }
-  :root {
-    --bg: #3a6fff;
-    --surface: rgba(255,255,255);
-    --surface2: rgba(255,255,255,0.85);
-    --border: rgba(255,255,255,0.5);
-    --accent: #fff;
-    --accent2: #ff6a9b;
-    --accent3: #fff;
-    --text: #fff;
-    --text-dim: rgba(255,255,255,0.8);
-    --text-dimmer: rgba(255,255,255,0.6);
-  }
+  #starCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
+  :root { --bg: #3a6fff; --surface: rgba(255,255,255); --surface2: rgba(255,255,255,0.85); --border: rgba(255,255,255,0.5); --accent: #fff; --accent2: #ff6a9b; --accent3: #fff; --text: #fff; --text-dim: rgba(255,255,255,0.8); --text-dimmer: rgba(255,255,255,0.6); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    background: linear-gradient(160deg, #1a3fff 0%, #3a6fff 25%, #5a8fff 55%, #8abfff 100%);
-    background-attachment: fixed;
-    color: var(--text);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
+  body { background: linear-gradient(160deg, #1a3fff 0%, #3a6fff 25%, #5a8fff 55%, #8abfff 100%); background-attachment: fixed; color: var(--text); font-family: 'Noto Sans TC', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: 0.4; }
   .fab-left, .fab-right { position: fixed; top: calc(52px + 1.2rem); z-index: 200; display: flex; align-items: center; gap: 0.4rem; backdrop-filter: blur(8px); border: none; cursor: pointer; padding: 0.5rem 0.9rem; transition: background 0.2s, transform 0.2s; text-decoration: none; color: #fff; }
   .fab-left { left: 1.2rem; border-radius: 2rem; }
   .fab-right { right: 1.2rem; border-radius: 0.4rem; flex-direction: column; gap: 5px; padding: 0.6rem 0.7rem; }
@@ -81,7 +45,7 @@
   @media (max-width: 700px) { .hero-layout { grid-template-columns: 1fr; margin-left: 0; padding: 4.5rem 1.2rem 1.5rem; gap: 1.2rem; } }
   .hero-left { padding-top: 1.5rem; }
   .hero-logo { font-family: "Unica One", sans-serif; font-size: 1.5rem; letter-spacing: 0.15em; line-height: 1.2; color: #fff; text-shadow: 0 0 6px rgba(255,255,255,0.8); cursor: pointer; margin-bottom: 1.8rem; opacity: 0.9; }
-  .hero-btns { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .hero-btns { display: flex; flex-direction: column; gap: 1.7rem; align-items: flex-start; }
   .hero-btn { display: inline-flex; align-items: center; font-family: 'Noto Sans TC', sans-serif; font-size: 0.8rem; font-weight: 500; color: #fff; background: #2133FF; padding: 0.25rem 1rem; text-decoration: none; border-radius: 0; transition: background 0.2s, transform 0.2s; white-space: nowrap; letter-spacing: 0.2em; }
   .hero-btn:hover { background: #1628cc; transform: translateX(4px); }
   .hero-right { display: flex; flex-direction: column; gap: 0.8rem; padding-top: 0.5rem; }
@@ -98,8 +62,7 @@
   .slide-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(0,0,0,0.25); cursor: pointer; transition: background 0.2s, transform 0.2s; border: none; }
   .slide-dot.active { background: #2133FF; transform: scale(1.3); }
   .slide-prev, .slide-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.15); border: none; color: #fff; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; z-index: 3; display: flex; align-items: center; justify-content: center; transition: background 0.2s; line-height: 1; }
-  .slide-prev { left: 0.8rem; }
-  .slide-next { right: 0.8rem; }
+  .slide-prev { left: 0.8rem; } .slide-next { right: 0.8rem; }
   .slide-prev:hover, .slide-next:hover { background: rgba(0,0,0,0.3); }
   @media (max-width: 700px) { .slideshow { aspect-ratio: 4/3; border-radius: 1rem; } .slide-prev, .slide-next { width: 28px; height: 28px; font-size: 1.1rem; } }
   .about-section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem 4rem; text-align: center; }
@@ -149,12 +112,12 @@
   .member-profile { max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem; position: relative; z-index: 2; }
   .profile-header { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; align-items: start; margin-bottom: 2.5rem; }
   @media (max-width: 700px) { .profile-header { grid-template-columns: 1fr; gap: 1rem; } }
-  .profile-avatar { width: 100%; aspect-ratio: 1; background: #F6F6F6; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Kaisei HarunoUmi', sans-serif;; font-size: 3.5rem; position: relative; overflow: hidden; }
+  .profile-avatar { width: 100%; aspect-ratio: 1; background: #F6F6F6; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Kaisei HarunoUmi', sans-serif; font-size: 3.5rem; position: relative; overflow: hidden; }
   .profile-avatar .initials { position: absolute; }
   .profile-info { display: flex; flex-direction: column; justify-content: center; padding-top: 0.3rem; }
   .profile-gen-badge { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #fff; margin-bottom: 0.4rem; }
   .profile-name { font-family: 'Kaisei HarunoUmi', sans-serif; font-size: 2rem; letter-spacing: 0.002em; line-height: 1.2; margin-bottom: 0.4rem; }
-  .profile-name-ja { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #fff; margin-bottom: 0.4rem; margin-bottom: 1rem; }
+  .profile-name-ja { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #fff; margin-bottom: 1rem; }
   .profile-bio { font-size: 1rem; line-height: 1.9; color: #fff; margin-bottom: 0.7rem; }
   .profile-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
   .profile-link { display: flex; align-items: center; gap: 0.6rem; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: #fff; text-decoration: none; padding: 0.5rem 0.7rem; border: 1px solid #ddd; transition: all 0.2s; }
@@ -169,20 +132,21 @@
   .post-card:hover { background: var(--surface2); }
   .post-video-wrap { position: relative; padding-bottom: 56.25%; background: #F6F6F6; overflow: hidden; }
   .post-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .post-tweet-wrap { background: #f7f9fc; min-height: 60px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #555; padding: 1rem; }
   .post-image-wrap { background: #F6F6F6; overflow: hidden; max-height: 220px; }
   .post-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
   .post-card:hover .post-image-wrap img { transform: scale(1.02); }
   .post-body { padding: 1.1rem 1.2rem; }
   .post-meta-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
-  .post-type-badge { font-family: 'Noto Sans TC', sans-serif; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em; padding: 0.3rem 0.6rem; text-transform: uppercase; color: #000; }
+  .post-type-badge { font-family: 'Noto Sans TC', sans-serif; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.1em; padding: 0.3rem 0.6rem; color: #000; }
   .badge-video { background: rgba(220,0,100,0.2); border: 1px solid rgba(220,0,100,0.9); }
   .badge-image { background: rgba(255,255,50,0.2); border: 1px solid rgba(255,180,50,0.9); }
-  .badge-text  { background: rgba(255,106,155,0.1);  border: 1px solid rgba(255,106,155,0.3); }
-  .badge-trans { background: rgba(0,220,220,0.2);    border: 1px solid rgba(0,220,220,0.9); }
+  .badge-text  { background: rgba(255,106,155,0.1); border: 1px solid rgba(255,106,155,0.3); }
+  .badge-trans { background: rgba(0,220,220,0.2); border: 1px solid rgba(0,220,220,0.9); }
   .post-desc { font-family: 'Noto Sans TC', sans-serif; font-weight: 400; font-size: 0.95rem; line-height: 1.75; color: #000; margin-bottom: 0.8rem; }
-  .post-moe { background: #EFEFEF; border-left: 2px solid var(--accent2); padding: 0.6rem 0.9rem; margin-bottom: 0.8rem; font-size: 0.9rem; line-height: 1.7; color: #000; }
   .post-recommend { background: #EEF2FF; border-left: 2px solid #2133FF; padding: 0.6rem 0.9rem; margin-bottom: 0.8rem; font-size: 0.9rem; line-height: 1.7; color: #1a1a2e; }
   .post-recommend::before { content: '★ 推薦說明 '; font-style: normal; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: #2133FF; display: block; margin-bottom: 0.3rem; letter-spacing: 0.1em; }
+  .post-moe { background: #EFEFEF; border-left: 2px solid var(--accent2); padding: 0.6rem 0.9rem; margin-bottom: 0.8rem; font-size: 0.9rem; line-height: 1.7; color: #000; }
   .post-moe::before { content: '♡ 投稿者分享 '; font-style: normal; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: #555; display: block; margin-bottom: 0.3rem; letter-spacing: 0.1em; }
   .post-meta-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 0.7rem; border-top: 1px solid #eee; flex-wrap: wrap; gap: 0.5rem; }
   .post-author { font-family: 'Space Mono', monospace; font-size: 0.63rem; color: #000; }
@@ -263,8 +227,8 @@
         <div class="hero-divider"></div>
         <div class="slideshow">
           <div class="slide active"><div class="slide-placeholder">活動宣傳圖片區<br><span>建議尺寸 1200 × 600px</span></div></div>
-          <div class="slide"><div class="slide-placeholder">COMMING SOON</div></div>
-          <div class="slide"><div class="slide-placeholder">COMMING SOON</div></div>
+          <div class="slide"><div class="slide-placeholder">COMING SOON</div></div>
+          <div class="slide"><div class="slide-placeholder">COMING SOON</div></div>
           <div class="slide-dots">
             <span class="slide-dot active" onclick="goSlide(0)"></span>
             <span class="slide-dot" onclick="goSlide(1)"></span>
@@ -351,23 +315,56 @@
 <script>
 const TEAM_DATA = [{ role: "網站管理", name: "管理員暱稱", desc: "負責網站維護與投稿審核。", links: [{ label: "Facebook", url: "https://facebook.com/example" }] }];
 const DATA = { members: [
-  { id: "miyabi", name: "花咲みやび", nameJa: "Hanasaki Miyabi", gen: "一期生", color: "#FF2F3F", bio: "150字以內成員介紹 🌺️", links: [{ label: "YouTube", url: "https://www.youtube.com/channel/UC6t3-_N8A6ME1JShZHHqOMw", icon: "🌺" }, { label: "Twitter / X", url: "https://x.com/miyabihanasaki", icon: "𝕏" }], tags: [], posts: [{ id: "p001", type: "video", videoId: "I8AZLzJVpwo", desc: "星座になれたら",recommend: "150字以內，可以列明推薦的時間軸以及簡述推薦內容。", moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }, { id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }, { id: "p003", type: "trans", videoId: null, desc: "【中文翻譯】附上時間戳方便對照。", recommend: null, moe: null, image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "izuru", name: "奏手イヅル", nameJa: "Kanade Izuru", gen: "一期生", color: "#1F2F8F", bio: "150字以內成員介紹 🎸️", links: [{ label: "YouTube", url: "https://www.youtube.com/@KanadeIzuru", icon: "🎸" }, { label: "Twitter / X", url: "https://x.com/kanadeizuru", icon: "𝕏" }], tags: [], posts: [{ label: "YouTube", url: "https://www.youtube.com/channel/UC6t3-_N8A6ME1JShZHHqOMw", icon: "▶" }, { label: "Twitter / X", url: "https://x.com/miyabihanasaki", icon: "𝕏" }], tags: [], posts: [ { id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "aruran", name: "アルランディス", nameJa: "Arurandeisu", gen: "一期生", color: "#2F6F4F", bio: "150字以內成員介紹 🍕", links: [{ label: "YouTube", url: "https://www.youtube.com/@Arurandeisu", icon: "🍕" }, { label: "Twitter / X", url: "https://x.com/arurandeisu", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "rikka", name: "律可", nameJa: "Rikka", gen: "一期生", color: "#FFB7DF", bio: "150字以內成員介紹 ⚙️", links: [{ label: "YouTube", url: "https://www.youtube.com/@rikka", icon: "️" }, { label: "Twitter / X", url: "https://x.com/rikkaroid", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "astel", name: "アステル・レダ", nameJa: "Astel Leda", gen: "二期生", color: "#0047AB", bio: "150字以內成員介紹 🎭 ", links: [{ label: "YouTube", url: "https://www.youtube.com/@AstelLeda", icon: "🎭" }, { label: "Twitter / X", url: "https://x.com/astel_leda", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "kishido", name: "岸堂天真", nameJa: "Kishido Temma", gen: "二期生", color: "#FFD902", bio: "150字以內成員介紹 🦔💨", links: [{ label: "YouTube", url: "https://www.youtube.com/@KishidoTemma", icon: "🦔💨" }, { label: "Twitter / X", url: "https://x.com/kishidotemma", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "roberu", name: "夕刻ロベル", nameJa: "Yukoku Roberu", gen: "二期生", color: "#CA5A00", bio: "150字以內成員介紹 🍷", links: [{ label: "YouTube", url: "https://www.youtube.com/@YukokuRoberu", icon: "🍷" }, { label: "Twitter / X", url: "https://x.com/yukokuroberu", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "shien", name: "影山シエン", nameJa: "Kageyama Shien", gen: "三期生", color: "#B481D0", bio: "150字以內成員介紹 🟣", links: [{ label: "YouTube", url: "https://www.youtube.com/@KageyamaShien", icon: "🟣" }, { label: "Twitter / X", url: "https://x.com/kageyamashien", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "ouga", name: "荒咬オウガ", nameJa: "Aragami Oga", gen: "三期生", color: "#D6F05D", bio: "150字以內成員介紹 🐃", links: [{ label: "YouTube", url: "https://www.youtube.com/@AragamiOga", icon: "🐃" }, { label: "Twitter / X", url: "https://x.com/aragamioga", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "fuma", name: "夜十神封魔", nameJa: "Yatogami Fuma", gen: "UPROAR!!", color: "#FABF13", bio: "150字以內成員介紹 🦝", links: [{ label: "YouTube", url: "https://www.youtube.com/@YatogamiFuma", icon: "🦝" }, { label: "Twitter / X", url: "https://x.com/yatogamifuma", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "gamma", name: "緋崎ガンマ", nameJa: "Hizaki Gamma", gen: "UPROAR!!", color: "#E60012", bio: "150字以內成員介紹 ", links: [{ label: "YouTube", url: "https://www.youtube.com/@HizakiGamma", icon: "▶" }, { label: "Twitter / X", url: "https://x.com/hizakigamma", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "uyu", name: "羽継烏有", nameJa: "Hanepi Uyu", gen: "UPROAR!!", color: "#F7F6F5", bio: "150字以內成員介紹 🃏", links: [{ label: "YouTube", url: "https://www.youtube.com/@UtsugiUyu", icon: "🃏" }, { label: "Twitter / X", url: "https://x.com/hanepiuyu", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] },
-  { id: "rio", name: "水無世燐央", nameJa: "Minase Rio", gen: "UPROAR!!", color: "#A4A8D4", bio: "150字以內成員介紹 🕯", links: [{ label: "YouTube", url: "https://www.youtube.com/@MinaseRio", icon: "🕯" }, { label: "Twitter / X", url: "https://x.com/minaserio", icon: "𝕏" }], tags: [], posts: [{ id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }] }
+  { id: "miyabi", name: "花咲みやび", nameJa: "Hanasaki Miyabi", gen: "一期生", color: "#FF2F3F", bio: "150字以內成員介紹 🌺️", links: [{ label: "YouTube", url: "https://www.youtube.com/channel/UC6t3-_N8A6ME1JShZHHqOMw", icon: "🌺" }, { label: "Twitter / X", url: "https://x.com/miyabihanasaki", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "video", videoId: "I8AZLzJVpwo", desc: "星座になれたら", recommend: "150字以內，可以列明推薦的時間軸以及簡述推薦內容。", moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" },
+    { id: "p002", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" },
+    { id: "p003", type: "trans", videoId: null, desc: "【中文翻譯】附上時間戳方便對照。", recommend: null, moe: null, image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "izuru", name: "奏手イヅル", nameJa: "Kanade Izuru", gen: "一期生", color: "#1F2F8F", bio: "150字以內成員介紹 🎸️", links: [{ label: "YouTube", url: "https://www.youtube.com/@KanadeIzuru", icon: "🎸" }, { label: "Twitter / X", url: "https://x.com/kanadeizuru", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "aruran", name: "アルランディス", nameJa: "Arurandeisu", gen: "一期生", color: "#2F6F4F", bio: "150字以內成員介紹 🍕", links: [{ label: "YouTube", url: "https://www.youtube.com/@Arurandeisu", icon: "🍕" }, { label: "Twitter / X", url: "https://x.com/arurandeisu", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "rikka", name: "律可", nameJa: "Rikka", gen: "一期生", color: "#FFB7DF", bio: "150字以內成員介紹 ⚙️", links: [{ label: "YouTube", url: "https://www.youtube.com/@rikka", icon: "⚙️" }, { label: "Twitter / X", url: "https://x.com/rikkaroid", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "astel", name: "アステル・レダ", nameJa: "Astel Leda", gen: "二期生", color: "#0047AB", bio: "150字以內成員介紹 🎭", links: [{ label: "YouTube", url: "https://www.youtube.com/@AstelLeda", icon: "🎭" }, { label: "Twitter / X", url: "https://x.com/astel_leda", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "kishido", name: "岸堂天真", nameJa: "Kishido Temma", gen: "二期生", color: "#FFD902", bio: "150字以內成員介紹 🦔💨", links: [{ label: "YouTube", url: "https://www.youtube.com/@KishidoTemma", icon: "🦔" }, { label: "Twitter / X", url: "https://x.com/kishidotemma", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "roberu", name: "夕刻ロベル", nameJa: "Yukoku Roberu", gen: "二期生", color: "#CA5A00", bio: "150字以內成員介紹 🍷", links: [{ label: "YouTube", url: "https://www.youtube.com/@YukokuRoberu", icon: "🍷" }, { label: "Twitter / X", url: "https://x.com/yukokuroberu", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "shien", name: "影山シエン", nameJa: "Kageyama Shien", gen: "三期生", color: "#B481D0", bio: "150字以內成員介紹 🟣", links: [{ label: "YouTube", url: "https://www.youtube.com/@KageyamaShien", icon: "🟣" }, { label: "Twitter / X", url: "https://x.com/kageyamashien", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "ouga", name: "荒咬オウガ", nameJa: "Aragami Oga", gen: "三期生", color: "#D6F05D", bio: "150字以內成員介紹 🐃", links: [{ label: "YouTube", url: "https://www.youtube.com/@AragamiOga", icon: "🐃" }, { label: "Twitter / X", url: "https://x.com/aragamioga", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "fuma", name: "夜十神封魔", nameJa: "Yatogami Fuma", gen: "UPROAR!!", color: "#FABF13", bio: "150字以內成員介紹 🦝", links: [{ label: "YouTube", url: "https://www.youtube.com/@YatogamiFuma", icon: "🦝" }, { label: "Twitter / X", url: "https://x.com/yatogamifuma", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "gamma", name: "緋崎ガンマ", nameJa: "Hizaki Gamma", gen: "UPROAR!!", color: "#E60012", bio: "150字以內成員介紹", links: [{ label: "YouTube", url: "https://www.youtube.com/@HizakiGamma", icon: "▶" }, { label: "Twitter / X", url: "https://x.com/hizakigamma", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "uyu", name: "羽継烏有", nameJa: "Hanepi Uyu", gen: "UPROAR!!", color: "#F7F6F5", bio: "150字以內成員介紹 🃏", links: [{ label: "YouTube", url: "https://www.youtube.com/@UtsugiUyu", icon: "🃏" }, { label: "Twitter / X", url: "https://x.com/hanepiuyu", icon: "𝕏" }], tags: [], posts: [
+    { id: "p001", type: "image", videoId: null, desc: "直播標題", recommend: null, moe: "可分享150字以內之投稿者心得、留言。", image: null, author: "anonymous", authorUrl: null, date: "2026-04-05" }
+  ]},
+  { id: "rio", name: "水無世燐央", nameJa: "Minase Rio", gen: "UPROAR!!", color: "#A4A8D4", bio: "平常配信以RPG劇情或經營養成類的遊戲居多，適合休閒掛台當作業BGM（注意：有機率超長配信時間）。APEX、OW比較激烈的槍戰遊戲有時出槌的很好笑，恐怖遊戲則是第三類：「絕對驚聲尖叫型」。害怕恐怖遊戲又想看台的人有福了！主播比你更害怕！還請請務必保護自己的耳朵！", links: [{ label: "YouTube", url: "https://www.youtube.com/@MinaseRio", icon: "🕯" }, { label: "Twitter / X", url: "https://x.com/minaserio", icon: "𝕏" }], tags: [], posts: [
+    { id: "r001", type: "image", videoIds: ["mGHCEU3wNDj1bg4q", "hVHPOZjHFc8U8UPl"], desc: "【特殊紀念配信】3Dお披露目・2023生日3D", recommend: "我個人最喜歡的紀念配信是「3Dお披露目」特別是唱到僕のこと這首歌，彷彿來到夢正要開始的地方，有種喜歡唱歌的幽靈的歌聲終於被世界接納的感動。", moe: "燐央當初出道時有說過其實對自己的聲音有點自卑，現在他能真正把自己的聲音變武器是真的很為他高興。", image: null, author: "YP", authorUrl: "https://x.com/yp_up_/status/2040484610715549770?s=46", date: "2026-04-10" },
+    { id: "r002", type: "image", videoIds: ["I8AZLzJVpwo", "j0AFDIHWo8i5kWT1"], desc: "【特殊紀念配信】2024生日逆凸・2025生日3D", recommend: "特殊紀念配信完全可以看到燐央的大E人屬性。每次都在驚訝「為什麼他們認識了？」「欸？！他們怎麼連動了」之類的完全不知道為什麼會認識這些人。", moe: "特別是2024生日逆凸，跟長江崚行和短褲27認識太扯了啦！！！長江崚行還是一起唱卡啦ok、會幫水無世燐央寫原創曲的關係耶…好瘋狂。", image: null, author: "YP", authorUrl: "https://x.com/yp_up_/status/2040484610715549770?s=46", date: "2026-04-10" },
+    { id: "r003", type: "image", videoId: "ahRLEYwBn4CJ-PDw", desc: "齁星Among us〔燐央視角〕", recommend: "說到合作或連動遊戲類，非常推薦所有人觀看齁星Among us燐央窗。燐央窗最好笑的就是看著他給予信任，再出其不意死亡。", moe: "到今年還是不太理解為什麼能信任岸堂天真。詳情也可以看 <a href='https://x.com/yp_up_/status/1604827474046898176?s=46' target='_blank'>精華切片</a>", image: null, author: "YP", authorUrl: "https://x.com/yp_up_/status/2040484610715549770?s=46", date: "2026-04-10" },
+    { id: "r004", type: "image", videoId: "BcptnAc1-c5L-mqr", desc: "驚聲尖叫金馬獎配信", recommend: null, moe: "夜間警備我的最愛，遊戲驚悚都沒有前輩同期三番五次闖入直播來一段（特色挨拶）驚悚。", image: null, author: "YP", authorUrl: "https://x.com/yp_up_/status/2040484610715549770?s=46", date: "2026-04-10" },
+    { id: "r005", type: "trans", videoId: null, tweetUrl: "https://x.com/yp_up_/status/1891164002337558659", desc: "遊戲直播之同色系連動兔子", recommend: null, moe: "兩個玩很爛的人湊才一起就是最好笑的。", image: null, author: "YP", authorUrl: "https://x.com/yp_up_/status/2040484610715549770?s=46", date: "2026-04-10" },
+    { id: "r006", type: "trans", videoId: null, tweetUrl: "https://x.com/yp_up_/status/1561838543021821952?s=46", desc: "麥塊TEMPUS迎新連動", recommend: null, moe: "燐央、阿蘭跟みやび歡迎TEMPUS時的麥塊連動也很經典好笑。", image: null, author: "YP", authorUrl: "https://x.com/yp_up_/status/2040484610715549770?s=46", date: "2026-04-10" }
+  ]}
 ]};
 function toggleNav() { document.getElementById('menuBtn').classList.toggle('open'); document.getElementById('navOverlay').classList.toggle('open'); document.getElementById('navDrawer').classList.toggle('open'); }
 function closeNav() { document.getElementById('menuBtn').classList.remove('open'); document.getElementById('navOverlay').classList.remove('open'); document.getElementById('navDrawer').classList.remove('open'); }
-function showPage(name) { closeNav(); document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById('page-' + name).classList.add('active'); document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); const navEl = document.getElementById('nav-' + name); if (navEl) navEl.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function showPage(name) { closeNav(); document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById('page-' + name).classList.add('active'); document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); const navEl = document.getElementById('nav-' + name); if (navEl) navEl.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(loadTweets, 400); }
 const GEN_ORDER = ["一期生", "二期生", "三期生", "UPROAR!!"];
 function renderMembersGrid() {
   const container = document.getElementById('membersContainer');
@@ -390,8 +387,20 @@ function renderPost(p, color) {
   const badgeClass = { video:'badge-video', image:'badge-image', text:'badge-text', trans:'badge-trans' }[p.type] || 'badge-text';
   const badgeLabel = { video:'歌曲推廣', image:'直播推薦', text:'文字', trans:'切片宣傳' }[p.type] || p.type;
   let mediaHtml = '';
-  if (p.type === 'video' && p.videoId) mediaHtml = `<div class="post-video-wrap"><iframe src="https://www.youtube.com/embed/${p.videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
-  else if (p.image) mediaHtml = `<div class="post-image-wrap"><img src="${p.image}" alt="投稿圖片" loading="lazy"></div>`;
+  if (p.videoIds && p.videoIds.length) {
+  p.videoIds.forEach(vid => {
+    mediaHtml += `<div class="post-video-wrap"><iframe src="https://www.youtube.com/embed/${vid}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+  });
+} else if (p.videoId) {
+  mediaHtml += `<div class="post-video-wrap"><iframe src="https://www.youtube.com/embed/${p.videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+}
+  if (p.tweetUrl) {
+    const tweetId = 'tweet-' + p.id;
+    mediaHtml += `<div class="post-tweet-wrap" id="${tweetId}" data-tweet="${p.tweetUrl}">載入推文中…</div>`;
+  }
+  if (p.image) {
+    mediaHtml += `<div class="post-image-wrap"><img src="${p.image}" alt="投稿圖片" loading="lazy"></div>`;
+  }
   const authorHtml = p.authorUrl && p.authorUrl !== 'null' ? `<a href="${p.authorUrl}" target="_blank" rel="noopener">${p.author}</a>` : `<span style="color:#555">${p.author}</span>`;
   return `<div class="post-card" style="--member-color:${color}">${mediaHtml}<div class="post-body"><div class="post-meta-top"><span class="post-type-badge ${badgeClass}">${badgeLabel}</span></div><p class="post-desc">${p.desc}</p>${p.recommend ? `<div class="post-recommend">${p.recommend}</div>` : ''}${p.moe ? `<div class="post-moe">${p.moe}</div>` : ''}<div class="post-meta-bottom"><div class="post-author">BY ${authorHtml}</div><div class="post-date">${p.date}</div></div></div></div>`;
 }
@@ -449,6 +458,25 @@ setInterval(() => changeSlide(1), 5000);
   }
   draw();
 })();
+// ★ Twitter 推文嵌入
+function loadTweets() {
+  if (!window.twttr || !window.twttr.widgets) return;
+  document.querySelectorAll('.post-tweet-wrap[data-tweet]').forEach(el => {
+    if (el.dataset.loaded) return;
+    el.dataset.loaded = '1';
+    const match = el.dataset.tweet.match(/status\/([0-9]+)/);
+    if (!match) return;
+    el.innerHTML = '';
+    twttr.widgets.createTweet(match[1], el, {
+      align: 'center', conversation: 'none', dnt: true
+    }).then(() => {
+      el.style.background = 'none';
+      el.style.padding = '0';
+    });
+  });
+}
+window.addEventListener('load', () => { if (window.twttr) twttr.ready(loadTweets); });
 </script>
+<script async src="https://platform.twitter.com/widgets.js"></script>
 </body>
 </html>
