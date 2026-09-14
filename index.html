@@ -231,16 +231,8 @@
             <img src="img/跑馬燈主頁圖MovinOn.jpg" alt="活動宣傳">
             </a>
           </div>
-          <div class="slide">
-            <a href="https://youtu.be/S6EF0EKVssI" target="_blank" rel="noopener">
-            <img src="img/應援廣告宣傳圖.png" alt="活動宣傳">
-            </a>
-          </div>
-          <div class="slide"><div class="slide-placeholder">COMING SOON</div></div>
-          <div class="slide"><div class="slide-placeholder">COMING SOON</div></div>
           <div class="slide-dots">
             <span class="slide-dot active" onclick="goSlide(0)"></span>
-            <span class="slide-dot" onclick="goSlide(1)"></span>
           </div>
           <button class="slide-prev" onclick="changeSlide(-1)">‹</button>
           <button class="slide-next" onclick="changeSlide(1)">›</button>
@@ -280,8 +272,13 @@
     <div class="divider-label">MEMBERS</div>
     <div class="divider-line"></div>
   </div>
+  <div style="max-width:1100px;margin:0 auto 2rem;padding:0 2rem;display:flex;gap:0.5rem;">
+    <button id="btn-jp" onclick="switchRegion('jp')" style="font-family:'Space Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;padding:0.5rem 1.5rem;border:1px solid #fff;cursor:pointer;background:#fff;color:#2133FF;transition:all 0.2s;">JP</button>
+    <button id="btn-en" onclick="switchRegion('en')" style="font-family:'Space Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;padding:0.5rem 1.5rem;border:1px solid rgba(255,255,255,0.5);cursor:pointer;background:transparent;color:#fff;transition:all 0.2s;">EN</button>
+  </div>
   <section class="members-section" id="members">
     <div id="membersContainer"></div>
+    <div id="membersContainerEN" style="display:none;"></div>
   </section>
 </div>
 <div class="page" id="page-member">
@@ -369,6 +366,40 @@ const DATA = { members: [
     { id: "r005", type: "trans", videoId: null, tweetUrl: "https://x.com/yp_up_/status/1891164002337558659", desc: "遊戲直播之同色系連動兔子", recommend: null, moe: "兩個玩很爛的人湊才一起就是最好笑的。", image: null, author: "YP", authorUrl: "https://x.com/yp_up_/status/2040484610715549770?s=46", date: "2026-04-10" }
   ]}
 ]};
+const EN_DATA = { members: [
+  { id: "altare", name: "Regis Altare", nameJa: "Regis Altare", gen: "TEMPUS", color: "#7C3AED", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@RegisAltare", icon: "🎇" }, { label: "Twitter / X", url: "https://x.com/regisaltare", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "axel", name: "Axel Syrios", nameJa: "Axel Syrios", gen: "TEMPUS", color: "#FF9933", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@AxelSyrios", icon: "⛓️" }, { label: "Twitter / X", url: "https://x.com/axelsyrios", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "bettel", name: "Gavis Bettel", nameJa: "Gavis Bettel", gen: "TEMPUS", color: "#EB3DA2", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@GavisBettel", icon: "🎩" }, { label: "Twitter / X", url: "https://x.com/gavisbettel", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "flayon", name: "Machina X Flayon", nameJa: "Machina X Flayon", gen: "TEMPUS", color: "#EB0000", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@MachinaXFlayon", icon: "🪫" }, { label: "Twitter / X", url: "https://x.com/machinaxflayon", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "hakka", name: "Banzoin Hakka", nameJa: "Banzoin Hakka", gen: "TEMPUS", color: "#C99BF6", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@BanzoinHakka", icon: "🔅" }, { label: "Twitter / X", url: "https://x.com/banzoinhakka", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "shinri", name: "Josuiji Shinri", nameJa: "Josuiji Shinri", gen: "TEMPUS", color: "#B95600", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@JosuijiShinri", icon: "🏹" }, { label: "Twitter / X", url: "https://x.com/josuijishinri", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "rexford", name: "Jurard T Rexford", nameJa: "Jurard T Rexford", gen: "ARMIS", color: "#800000", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@JurardTRexford", icon: "🦖" }, { label: "Twitter / X", url: "https://x.com/jurardtrexford", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "goldbullet", name: "Goldbullet", nameJa: "Goldbullet", gen: "ARMIS", color: "#006B54", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@Goldbulletch", icon: "🦅" }, { label: "Twitter / X", url: "https://x.com/goldbullet_en", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "octavio", name: "Octavio", nameJa: "Octavio", gen: "ARMIS", color: "#1C449A", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@Octavio_en", icon: "ထ" }, { label: "Twitter / X", url: "https://x.com/octavio_holo", icon: "𝕏" }], tags: [], posts: [] },
+  { id: "ruze", name: "Crimzon Ruze", nameJa: "Crimzon Ruze", gen: "ARMIS", color: "#E60012", bio: "", links: [{ label: "YouTube", url: "https://www.youtube.com/@CrimzonRuze", icon: "💢" }, { label: "Twitter / X", url: "https://x.com/crimzonruze", icon: "𝕏" }], tags: [], posts: [] }
+]};
+const EN_GEN_ORDER = ["TEMPUS", "ARMIS"];
+function renderENMembersGrid() {
+  const container = document.getElementById('membersContainerEN');
+  const grouped = {}; EN_GEN_ORDER.forEach(g => grouped[g] = []);
+  EN_DATA.members.forEach(m => { if (!grouped[m.gen]) grouped[m.gen] = []; grouped[m.gen].push(m); });
+  container.innerHTML = EN_GEN_ORDER.map(gen => { if (!grouped[gen] || grouped[gen].length === 0) return ''; return `<div class="gen-group"><div class="gen-label">HOLOSTARS EN · ${gen}</div><div class="members-grid">${grouped[gen].map(m => `<div class="member-card fade-up" style="--member-color:${m.color}" onclick="showMember('${m.id}')"><div class="member-color-dot" style="background:${m.color}"></div><div class="member-name">${m.name}</div><div class="member-name-ja">${m.nameJa}</div>${m.tags.filter(Boolean).map(t => `<span class="member-tag">${t}</span>`).join('')}<div class="member-count"><strong>${m.posts.length}</strong> 篇投稿</div></div>`).join('')}</div></div>`; }).join('');
+}
+function switchRegion(region) {
+  const jp = document.getElementById('membersContainer');
+  const en = document.getElementById('membersContainerEN');
+  const btnJP = document.getElementById('btn-jp');
+  const btnEN = document.getElementById('btn-en');
+  if (region === 'jp') {
+    jp.style.display = ''; en.style.display = 'none';
+    btnJP.style.background = '#fff'; btnJP.style.color = '#2133FF'; btnJP.style.borderColor = '#fff';
+    btnEN.style.background = 'transparent'; btnEN.style.color = '#fff'; btnEN.style.borderColor = 'rgba(255,255,255,0.5)';
+  } else {
+    jp.style.display = 'none'; en.style.display = '';
+    btnEN.style.background = '#fff'; btnEN.style.color = '#2133FF'; btnEN.style.borderColor = '#fff';
+    btnJP.style.background = 'transparent'; btnJP.style.color = '#fff'; btnJP.style.borderColor = 'rgba(255,255,255,0.5)';
+  }
+}
 function toggleNav() { document.getElementById('menuBtn').classList.toggle('open'); document.getElementById('navOverlay').classList.toggle('open'); document.getElementById('navDrawer').classList.toggle('open'); }
 function closeNav() { document.getElementById('menuBtn').classList.remove('open'); document.getElementById('navOverlay').classList.remove('open'); document.getElementById('navDrawer').classList.remove('open'); }
 function showPage(name) { closeNav(); document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById('page-' + name).classList.add('active'); document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); const navEl = document.getElementById('nav-' + name); if (navEl) navEl.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(loadTweets, 400); }
@@ -381,7 +412,7 @@ function renderMembersGrid() {
 }
 function renderTeam() { document.getElementById('teamGrid').innerHTML = TEAM_DATA.map(t => `<div class="team-card"><div class="team-role">${t.role}</div><div class="team-name">${t.name}</div>${t.desc ? `<div class="team-desc">${t.desc}</div>` : ''} ${t.links.length ? `<div class="team-links">${t.links.map(l => `<a class="team-link" href="${l.url}" target="_blank">${l.label}</a>`).join('')}</div>` : ''}</div>`).join(''); }
 function showMember(id) {
-  const m = DATA.members.find(x => x.id === id); if (!m) return;
+  const m = DATA.members.find(x => x.id === id) || EN_DATA.members.find(x => x.id === id); if (!m) return;
   document.getElementById('memberProfile').innerHTML = `<div class="profile-header fade-up" style="--member-color:${m.color}"><div class="profile-avatar" style="border-color:${m.color}40;">${m.avatar ? `<img src="${m.avatar}" alt="${m.name}" style="width:100%;height:100%;object-fit:cover;display:block;">` : `<span class="initials" style="color:${m.color};">${m.name[0]}</span>`}</div><div class="profile-info"><div class="profile-gen-badge">HOLOSTARS ${m.gen}</div><div class="profile-name" style="color:${m.color};">${m.name}</div><div class="profile-name-ja">${m.nameJa}</div>${m.bio ? `<p class="profile-bio">${m.bio}</p>` : ''}<div class="profile-links">${m.links.map(l => `<a class="profile-link" href="${l.url}" target="_blank" rel="noopener" style="--member-color:${m.color}"><span>${l.icon}</span>${l.label}</a>`).join('')}</div>${m.tags.filter(Boolean).length ? `<div class="profile-tags">${m.tags.filter(Boolean).map(t => `<span class="member-tag">${t}</span>`).join('')}</div>` : ''}</div></div>`;
   document.getElementById('postsLabel').textContent = `POSTS · ${m.name}`;
   document.getElementById('postsCount').textContent = `${m.posts.length} 篇投稿`;
@@ -407,7 +438,7 @@ function renderPost(p, color) {
   const authorHtml = p.authorUrl && p.authorUrl !== 'null' ? `<a href="${p.authorUrl}" target="_blank" rel="noopener">${p.author}</a>` : `<span style="color:#555">${p.author}</span>`;
   return `<div class="post-card" style="--member-color:${color}">${mediaHtml}<div class="post-body"><div class="post-meta-top"><span class="post-type-badge ${badgeClass}">${badgeLabel}</span></div><p class="post-desc">${p.desc}</p>${p.recommend ? `<div class="post-recommend">${p.recommend}</div>` : ''}${p.moe ? `<div class="post-moe">${p.moe}</div>` : ''}<div class="post-meta-bottom"><div class="post-author">BY ${authorHtml}</div><div class="post-date">${p.date}</div></div></div></div>`;
 }
-renderMembersGrid(); renderTeam();
+renderMembersGrid(); renderTeam(); renderENMembersGrid();
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.slide-dot');
